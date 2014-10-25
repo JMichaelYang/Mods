@@ -1,0 +1,14 @@
+package com.jgames.bigguns.guns;
+
+import net.minecraft.item.Item;
+
+public class ItemGun extends Item
+{
+	public GunType gunType;
+	
+	public ItemGun(GunType type)
+	{
+		super();
+		this.setMaxStackSize(1);
+	}
+}

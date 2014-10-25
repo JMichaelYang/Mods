@@ -4,6 +4,8 @@ public class Settings
 {
 	public static int hitMarker = 0;
 	public static int shootTime = 0;
+	public static boolean hasShot = false;
+	
 	public static float zoomeLevel = 1.0f;
 	public static float mouseSensitivity;
 }

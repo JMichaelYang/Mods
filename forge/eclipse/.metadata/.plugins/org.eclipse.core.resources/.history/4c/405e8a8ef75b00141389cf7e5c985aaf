@@ -1,0 +1,6 @@
+package com.jgames.bigguns.data;
+
+public class Variables 
+{
+	public static int shotTimer;
+}

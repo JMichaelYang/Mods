@@ -1,0 +1,27 @@
+package com.jgames.bigguns.guns;
+
+import com.jgames.bigguns.common.BigGuns;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
+
+public class ItemGun extends Item
+{
+	public GunType gunType;
+	
+	public ItemGun(GunType type)
+	{
+		super();
+		this.setMaxStackSize(1);
+		this.setCreativeTab(BigGuns.TAB);
+		this.gunType = type;
+		
+		GameRegistry.registerItem(this, this.gunType.name);
+	}
+	
+	@Override
+	public void onUpdate(ItemStack itemStack, World world, Entity entity, int inventoryIndex, boolean flag)
+	{
+		
+	}
+}
