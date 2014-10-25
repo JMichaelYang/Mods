@@ -1,0 +1,29 @@
+[20:26:50] [main/INFO]: Setting user: Player560
+[20:26:51] [Client thread/INFO]: LWJGL Version: 2.9.1
+[20:26:56] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns
+[20:26:56] [Sound Library Loader/INFO]: Sound engine started
+[20:26:58] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[20:26:58] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[20:26:58] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns
+[20:26:59] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[20:26:59] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[20:26:59] [Sound Library Loader/INFO]: Sound engine started
+[20:27:05] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[20:27:05] [Server thread/INFO]: Generating keypair
+[20:27:05] [Server thread/INFO]: Preparing start region for level 0
+[20:27:06] [Server thread/INFO]: Changing view distance to 12, from 10
+[20:27:06] [Server thread/INFO]: Player560[local:E:c4ed848a] logged in with entity id 32 at (-1319.5, 4.0, 1605.5)
+[20:27:06] [Server thread/INFO]: Player560 joined the game
+[20:27:07] [Server thread/INFO]: Saving and pausing game...
+[20:27:07] [Server thread/INFO]: Saving chunks for level 'Test'/Overworld
+[20:27:08] [Server thread/INFO]: Saving chunks for level 'Test'/Nether
+[20:27:08] [Server thread/INFO]: Saving chunks for level 'Test'/The End
+[20:27:10] [Server thread/INFO]: Player560 has just earned the achievement [Taking Inventory]
+[20:27:10] [Client thread/INFO]: [CHAT] Player560 has just earned the achievement [Taking Inventory]
+[20:27:13] [Client thread/INFO]: Stopping!
+[20:27:13] [Server thread/INFO]: Stopping server
+[20:27:13] [Server thread/INFO]: Saving players
+[20:27:13] [Server thread/INFO]: Saving worlds
+[20:27:13] [Server thread/INFO]: Saving chunks for level 'Test'/Overworld
+[20:27:13] [Server thread/INFO]: Saving chunks for level 'Test'/Nether
+[20:27:13] [Server thread/INFO]: Saving chunks for level 'Test'/The End
