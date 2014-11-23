@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
+  "modid": "bigguns",
+  "name": "Big Guns",
+  "description": "The Big Guns mod by jgames!",
+  "version": "0.0.1",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Jae"],
+  "credits": "Minecraft Forge for framework, Paintball mod for inspiration, Flan's mod for inspiration, Jae for development :)",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -1,6 +1,0 @@
-package com.jgames.bigguns.guns;
-
-public class ItemGun extends Item
-{
-
-}

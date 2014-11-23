@@ -16,7 +16,7 @@ public class CreativeTab extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() 
 	{
-		return Item.getItemById(40);
+		return BigGuns.j16;
 	}
 	
 	@Override
