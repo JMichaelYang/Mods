@@ -1,0 +1,20 @@
+package com.jgames.skiing.skis;
+
+import java.util.ArrayList;
+
+public class TypeSkis 
+{
+	public String name;
+	
+	public float maxSpeed;
+	public float rotationSpeed;
+	public boolean twinTips;
+	
+	public ArrayList<TypeSkis> skis = new ArrayList<TypeSkis>();
+	
+	public TypeSkis(String name,
+			float maxSpeed, float rotationSpeed, boolean twinTips)
+			{
+		
+			}
+}

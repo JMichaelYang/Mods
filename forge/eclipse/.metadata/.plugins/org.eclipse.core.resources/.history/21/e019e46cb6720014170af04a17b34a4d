@@ -1,0 +1,21 @@
+package com.jgames.skiing.skis;
+
+import com.jgames.skiing.common.SkiMod;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.Item;
+
+public class ItemSkis extends Item
+{
+	public TypeSkis typeSkis;
+	
+	public ItemSkis(TypeSkis typeSkis)
+	{
+		super();
+		this.setMaxStackSize(1);
+		this.setCreativeTab(SkiMod.TAB);
+		this.typeSkis = typeSkis;
+		
+		GameRegistry.registerItem(this, this.typeSkis.name);
+	}
+}

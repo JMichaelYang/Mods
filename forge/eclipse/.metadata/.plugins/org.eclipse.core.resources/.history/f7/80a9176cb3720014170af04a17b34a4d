@@ -1,0 +1,6 @@
+package com.jgames.skiing.skis;
+
+public class TypeSkis 
+{
+	public String name;
+}

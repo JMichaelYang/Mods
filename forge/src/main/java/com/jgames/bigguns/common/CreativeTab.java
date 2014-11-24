@@ -5,7 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class CreativeTab extends CreativeTabs {
+public class CreativeTab extends CreativeTabs 
+{
 
 	public CreativeTab(int tabIndex, String label) 
 	{

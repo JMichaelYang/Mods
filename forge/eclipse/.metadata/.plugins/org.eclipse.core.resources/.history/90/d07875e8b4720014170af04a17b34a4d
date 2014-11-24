@@ -1,0 +1,12 @@
+package com.jgames.skiing.skis;
+
+public class TypeSkis 
+{
+	public String name;
+	
+	public float maxSpeed;
+	public float rotationSpeed;
+	public boolean twinTips;
+	
+	public ArrayList<TypeSkis> skis = new ArrayList<TypeSkis>();
+}

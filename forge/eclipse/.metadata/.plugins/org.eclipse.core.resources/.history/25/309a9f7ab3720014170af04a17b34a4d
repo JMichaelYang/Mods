@@ -1,0 +1,9 @@
+package com.jgames.skiing.skis;
+
+public class TypeSkis 
+{
+	public String name;
+	
+	public float maxSpeed;
+	public float rotationSpeed;
+}

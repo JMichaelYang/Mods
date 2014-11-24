@@ -1,0 +1,13 @@
+package com.jgames.skiing.skis;
+
+import net.minecraft.item.Item;
+
+public class ItemSkis extends Item
+{
+	public TypeSkis typeSkis;
+	
+	public ItemSkis(TypeSkis typeSkis)
+	{
+		
+	}
+}

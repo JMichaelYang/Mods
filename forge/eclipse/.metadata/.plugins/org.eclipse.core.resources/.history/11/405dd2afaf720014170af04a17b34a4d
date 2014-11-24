@@ -1,0 +1,5 @@
+package com.jgames.skiing.client;
+
+public class ClientProxy {
+
+}
