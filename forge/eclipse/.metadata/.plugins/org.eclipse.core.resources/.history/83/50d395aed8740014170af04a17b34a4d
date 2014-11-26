@@ -1,0 +1,41 @@
+package com.jgames.skiing.skis;
+
+import org.lwjgl.opengl.GL11;
+
+import com.jgames.skiing.models.ModelSkis;
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+
+public class RenderSkis extends Render
+{
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float r1, float r2) 
+	{
+		this.render((EntitySkis)entity, x, y, z, r1, r2);
+	}
+	
+	public void render(EntitySkis skis, double d, double d1, double d2, float f, float f1)
+	{
+		this.bindEntityTexture(skis);
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) d, (float) d1, (float) d2);
+		GL11.glRotatef(f, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(skis.prevRoll + ((float)skis.roll - skis.prevRoll) * f1, 1f, 0f, 0f);
+		GL11.glRotatef(skis.prevRotationYaw + (skis.yaw - skis.prevRotationYaw) * f1, 0f, 1f, 0f);
+		ModelBase model = skis.model;
+		if(model != null)
+		{
+			model.render(skis, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		}
+		GL11.glPopMatrix();
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		return new ResourceLocation("skimod", "textures/entities/Skis" + ((EntitySkis)entity).type.name + ".png");
+	}
+}

@@ -1,0 +1,8 @@
+package com.jgames.skiing.skis;
+
+import net.minecraft.entity.Entity;
+
+public class EntitySkis extends Entity
+{
+
+}

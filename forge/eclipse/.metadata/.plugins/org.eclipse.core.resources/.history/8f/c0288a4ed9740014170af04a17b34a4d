@@ -1,0 +1,29 @@
+package com.jgames.skiing.minecraft;
+
+import net.minecraft.client.Minecraft;
+
+import com.jgames.bigguns.data.Settings;
+import com.jgames.skiing.common.CommonProxy;
+
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
+public class ClientProxy extends CommonProxy
+{
+	@Override
+	public void addRenders()
+	{
+		RenderingRegistry.registerEntityRenderingHandler(EntitySkis.class, new RenderSkis());
+	}
+	
+	@Override
+	public void renderHitMarker()
+	{
+		
+	}
+	
+	@Override
+	public void renderSight()
+	{
+		
+	}
+}

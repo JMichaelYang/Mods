@@ -1,0 +1,129 @@
+---- Minecraft Crash Report ----
+// This doesn't make any sense!
+
+Time: 11/25/14 10:00 PM
+Description: Rendering entity in world
+
+java.lang.NullPointerException: Rendering entity in world
+	at com.jgames.skiing.skis.RenderSkis.doRender(RenderSkis.java:28)
+	at net.minecraft.client.renderer.entity.RenderManager.func_147939_a(RenderManager.java:300)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:278)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:251)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:527)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1300)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1087)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1056)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:951)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at GradleStart.bounce(GradleStart.java:107)
+	at GradleStart.startClient(GradleStart.java:100)
+	at GradleStart.main(GradleStart.java:55)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.jgames.skiing.skis.RenderSkis.doRender(RenderSkis.java:28)
+
+-- Entity being rendered --
+Details:
+	Entity Type: Skis (com.jgames.skiing.skis.EntitySkis)
+	Entity ID: 142
+	Entity Name: entity.Skis.name
+	Entity's Exact location: 78.30, 67.43, 255.69
+	Entity's Block location: World: (78,67,255), Chunk: (at 14,4,15 in 4,15; contains blocks 64,0,240 to 79,255,255), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Entity's Momentum: 0.00, 0.00, 0.00
+
+-- Renderer details --
+Details:
+	Assigned renderer: com.jgames.skiing.skis.RenderSkis@353b5d86
+	Location: -1.20,-1.17,1.18 - World: (-2,-2,1), Chunk: (at 14,-1,1 in -1,0; contains blocks -16,0,0 to -1,255,15), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Rotation: -45.0
+	Delta: 0.55284595
+Stacktrace:
+	at net.minecraft.client.renderer.entity.RenderManager.func_147939_a(RenderManager.java:300)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:278)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:251)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:527)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1300)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player284'/392, l='MpServer', x=79.50, y=68.62, z=254.50]]
+	Chunk stats: MultiplayerChunkCache: 40, 40
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (76,64,248), Chunk: (at 12,4,8 in 4,15; contains blocks 64,0,240 to 79,255,255), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 153 game time, 153 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 51 total; [EntityFallingBlock['Falling Block'/643, l='MpServer', x=25.50, y=11.96, z=279.50], EntityFallingBlock['Falling Block'/644, l='MpServer', x=25.50, y=10.96, z=277.50], EntityFallingBlock['Falling Block'/645, l='MpServer', x=23.50, y=10.96, z=277.50], EntityFallingBlock['Falling Block'/646, l='MpServer', x=24.50, y=11.96, z=277.50], EntityClientPlayerMP['Player284'/392, l='MpServer', x=79.50, y=68.62, z=254.50], EntitySkis['entity.Skis.name'/142, l='MpServer', x=78.30, y=67.43, z=255.69], EntityCreeper['Creeper'/166, l='MpServer', x=85.50, y=31.00, z=210.50], EntityHorse['Horse'/167, l='MpServer', x=86.09, y=69.00, z=301.09], EntityHorse['Horse'/168, l='MpServer', x=83.81, y=69.00, z=298.81], EntityHorse['Horse'/169, l='MpServer', x=83.50, y=69.00, z=302.50], EntityZombie['Zombie'/186, l='MpServer', x=103.50, y=25.00, z=216.50], EntityZombie['Zombie'/187, l='MpServer', x=105.50, y=25.00, z=217.50], EntityZombie['Zombie'/188, l='MpServer', x=103.50, y=25.00, z=217.50], EntityZombie['Zombie'/189, l='MpServer', x=102.50, y=25.00, z=218.50], EntityHorse['Horse'/61, l='MpServer', x=30.50, y=69.00, z=245.50], EntityChicken['Chicken'/190, l='MpServer', x=100.50, y=67.00, z=226.50], EntityHorse['Horse'/62, l='MpServer', x=29.50, y=69.00, z=243.50], EntityChicken['Chicken'/191, l='MpServer', x=100.50, y=67.00, z=230.50], EntityHorse['Horse'/63, l='MpServer', x=28.29, y=70.00, z=249.05], EntityChicken['Chicken'/192, l='MpServer', x=97.50, y=67.00, z=229.50], EntityHorse['Horse'/64, l='MpServer', x=28.78, y=69.00, z=250.78], EntityChicken['Chicken'/193, l='MpServer', x=97.50, y=66.00, z=225.50], EntityHorse['Horse'/65, l='MpServer', x=29.91, y=68.00, z=253.72], EntityHorse['Horse'/194, l='MpServer', x=102.50, y=70.00, z=271.53], EntityHorse['Horse'/66, l='MpServer', x=31.81, y=69.00, z=242.50], EntityHorse['Horse'/195, l='MpServer', x=100.78, y=70.00, z=272.78], EntityHorse['Horse'/67, l='MpServer', x=29.91, y=68.00, z=256.03], EntityHorse['Horse'/196, l='MpServer', x=110.51, y=71.00, z=285.50], EntityZombie['Zombie'/198, l='MpServer', x=124.50, y=39.00, z=242.50], EntityHorse['Horse'/199, l='MpServer', x=119.50, y=71.00, z=283.50], EntityHorse['Horse'/200, l='MpServer', x=118.50, y=72.00, z=286.50], EntityHorse['Horse'/201, l='MpServer', x=117.50, y=71.00, z=281.50], EntityHorse['Horse'/202, l='MpServer', x=114.50, y=71.00, z=283.50], EntityHorse['Horse'/203, l='MpServer', x=118.50, y=72.00, z=290.50], EntitySkeleton['Skeleton'/81, l='MpServer', x=47.22, y=35.00, z=212.13], EntityHorse['Horse'/82, l='MpServer', x=47.53, y=65.00, z=238.21], EntityHorse['Horse'/83, l='MpServer', x=31.78, y=68.00, z=243.78], EntityHorse['Horse'/84, l='MpServer', x=34.09, y=68.00, z=242.50], EntityHorse['Horse'/85, l='MpServer', x=32.28, y=68.00, z=255.97], EntityFallingBlock['Falling Block'/736, l='MpServer', x=105.50, y=37.11, z=264.50], EntityFallingBlock['Falling Block'/737, l='MpServer', x=104.50, y=37.11, z=263.50], EntityFallingBlock['Falling Block'/738, l='MpServer', x=103.50, y=36.11, z=263.50], EntityFallingBlock['Falling Block'/739, l='MpServer', x=104.50, y=37.11, z=262.50], EntityFallingBlock['Falling Block'/740, l='MpServer', x=98.50, y=69.11, z=285.50], EntityCreeper['Creeper'/114, l='MpServer', x=55.47, y=36.00, z=217.56], EntityCreeper['Creeper'/115, l='MpServer', x=52.50, y=36.00, z=222.50], EntitySkeleton['Skeleton'/116, l='MpServer', x=61.50, y=37.00, z=227.48], EntityHorse['Horse'/117, l='MpServer', x=48.78, y=65.00, z=231.38], EntityHorse['Horse'/118, l='MpServer', x=50.09, y=64.00, z=233.50], EntityHorse['Horse'/119, l='MpServer', x=53.59, y=64.00, z=231.09], EntityItem['item.item.seeds'/120, l='MpServer', x=55.75, y=62.13, z=240.75]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2555)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:973)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at GradleStart.bounce(GradleStart.java:107)
+	at GradleStart.startClient(GradleStart.java:100)
+	at GradleStart.main(GradleStart.java:55)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_25, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 784744784 bytes (748 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 5, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP v9.05 FML v7.10.85.1230 Minecraft Forge 10.13.2.1230 5 mods loaded, 5 mods active
+	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	FML{7.10.85.1230} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.2.1230.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Forge{10.13.2.1230} [Minecraft Forge] (forgeSrc-1.7.10-10.13.2.1230.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	bigguns{0.0.1} [Big Guns] (bin) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	skimod{0.0.1} [Ski Mod] (bin) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: Intel(R) HD Graphics 4000 GL version 4.0.0 - Build 10.18.10.3412, Intel
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

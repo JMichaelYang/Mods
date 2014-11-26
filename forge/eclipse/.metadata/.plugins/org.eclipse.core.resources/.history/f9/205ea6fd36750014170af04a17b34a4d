@@ -1,0 +1,6 @@
+package com.jgames.skiing.minecraft;
+
+public class KeyBindings 
+{
+	public static KeyBinding leftKey;
+}

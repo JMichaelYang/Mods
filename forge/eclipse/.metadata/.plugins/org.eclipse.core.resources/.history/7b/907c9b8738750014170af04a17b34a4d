@@ -1,0 +1,9 @@
+package com.jgames.skiing.minecraft;
+
+public class Variables 
+{
+	public static boolean leftKey = false;
+	public static boolean rightKey = false;
+	public static boolean upKey = false;
+	public static boolean downKey = false;
+}

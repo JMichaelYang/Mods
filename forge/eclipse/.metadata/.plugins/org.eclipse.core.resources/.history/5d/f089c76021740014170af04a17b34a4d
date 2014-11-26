@@ -1,0 +1,168 @@
+package com.jgames.skiing.skis;
+
+import org.lwjgl.util.vector.Vector3f;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+
+public class EntitySkis extends Entity
+{
+	private boolean isEmpty;
+	
+	private double posX;
+	private double posY;
+	private double posZ;
+	private double yaw;
+	private double pitch;
+	private double roll;
+	@SideOnly(Side.CLIENT)
+	private double velocityX;
+	@SideOnly(Side.CLIENT)
+	private double velocityY;
+	@SideOnly(Side.CLIENT)
+	private double velocityZ;
+	
+	public TypeSkis type;
+	
+	public float acceleration;
+	public float prevRoll;
+	
+	public EntitySkis(World world) 
+	{
+		super(world);
+		
+		this.preventEntitySpawning = true;
+		this.setSize(1f, 1f);
+		this.yOffset = 1f / 16f;
+		this.renderDistanceWeight = 100f;
+	}
+	
+	public EntitySkis(World world, TypeSkis type)
+	{
+		this(world);
+		
+		this.type = type;
+	}
+
+	@Override
+	protected void entityInit() 
+	{
+		
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound nbt) 
+	{
+		this.type = TypeSkis.getType(nbt.getString("Type"));
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound nbt) 
+	{
+		nbt.setString("Type", this.type.name);
+	}
+
+	protected boolean canTriggerWalking()
+	{
+		return false;
+	}
+
+	public AxisAlignedBB getCollisionBox(Entity entity)
+	{
+		return null;
+	}
+	
+	public AxisAlignedBB getBoundingBox()
+	{
+		return this.boundingBox;
+	}
+	
+	@Override
+	public boolean canBePushed()
+	{
+		return false;
+	}
+	
+	@Override
+    public double getMountedYOffset()
+    {
+        return 0d;
+    }
+	
+	@Override
+	public boolean shouldRiderSit()
+    {
+        return false;
+    }
+	
+	@SideOnly(Side.CLIENT)
+	public void setPositionAndRotation2(double x, double y, double z, float yaw, float pitch, int ticks)
+	{
+		if(this.isEmpty)
+		{
+			
+		}
+		else
+		{
+			double d3 = x - this.posX;
+            double d4 = y - this.posY;
+            double d5 = z - this.posZ;
+            double d6 = d3 * d3 + d4 * d4 + d5 * d5;
+
+            if (d6 <= 1.0D)
+            {
+                return;
+            }
+		}
+		
+		this.posX = x;
+		this.posY = y;
+		this.posZ = z;
+		this.yaw = yaw;
+		this.pitch = pitch;
+		this.motionX = this.velocityX;
+		this.motionY = this.velocityY;
+		this.motionZ = this.velocityZ;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void setVelocity(double x, double y, double z)
+	{
+		this.velocityX = this.motionX = x;
+		this.velocityY = this.motionY = y;
+		this.velocityZ = this.motionZ = z;
+	}
+	
+	public void setPositionRotationAndMotion(double x, double y, double z, float yaw, float pitch, float roll, double motX, double motY, double motZ, float velYaw, float velPitch, float velRoll, float throt, float steeringYaw)
+	{
+		if(worldObj.isRemote)
+		{
+	        this.serverPosX = x;
+	        this.serverPosY = y;
+	        this.serverPosZ = z;
+	        serverYaw = yaw;
+	        serverPitch = pitch;
+	        serverRoll = roll;
+	        serverPositionTransitionTicker = 5;
+		}
+		else
+		{
+			setPosition(x, y, z);
+			prevRotationYaw = yaw;
+			prevRotationPitch = pitch;
+			prevRotationRoll = roll;
+			setRotation(yaw, pitch, roll);
+		}
+		//Set the motions regardless of side.
+        motionX = motX;
+        motionY = motY;
+        motionZ = motZ;
+        angularVelocity = new Vector3f(velYaw, velPitch, velRoll);
+        throttle = throt;
+	}
+}

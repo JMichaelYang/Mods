@@ -1,0 +1,16 @@
+package com.jgames.skiing.minecraft;
+
+import net.minecraft.client.settings.KeyBinding;
+
+public class KeyBindings 
+{
+	public static KeyBinding leftKey;
+	public static KeyBinding rightKey;
+	public static KeyBinding upKey;
+	public static KeyBinding downKey;
+	
+	public static void init()
+	{
+		KeyBindings.leftKey = new KeyBinding("key.leftKey")
+	}
+}

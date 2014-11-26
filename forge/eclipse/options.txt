@@ -85,6 +85,10 @@ key_key.hotbar.6:7
 key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
+key_key.leftKey:203
+key_key.rightKey:205
+key_key.upKey:200
+key_key.downKey:208
 soundCategory_master:0.0
 soundCategory_music:1.0
 soundCategory_record:1.0

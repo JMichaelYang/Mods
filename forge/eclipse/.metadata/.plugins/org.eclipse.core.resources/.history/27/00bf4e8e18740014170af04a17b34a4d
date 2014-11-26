@@ -1,0 +1,76 @@
+package com.jgames.skiing.skis;
+
+import org.lwjgl.util.vector.Vector3f;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+
+public class EntitySkis extends Entity
+{
+	private boolean isEmpty;
+	
+	private double posX;
+	private double posY;
+	private double posZ;
+	private double yaw;
+	private double pitch;
+	private double roll;
+	
+	public TypeSkis type;
+	
+	public float acceleration;
+	public float prevRoll;
+	public Vector3f angularVelocity = new Vector3f(0f, 0f, 0f);
+	
+	public EntitySkis(World world) 
+	{
+		super(world);
+		
+		this.preventEntitySpawning = true;
+		this.setSize(1f, 1f);
+		this.yOffset = 1f / 16f;
+		this.renderDistanceWeight = 100f;
+	}
+	
+	public EntitySkis(World world, TypeSkis type)
+	{
+		this(world);
+		
+		this.type = type;
+	}
+
+	@Override
+	protected void entityInit() 
+	{
+		
+	}
+
+	@Override
+	protected void readEntityFromNBT(NBTTagCompound nbt) 
+	{
+		this.type = TypeSkis.getType(nbt.getString("Type"));
+	}
+
+	@Override
+	protected void writeEntityToNBT(NBTTagCompound nbt) 
+	{
+		nbt.setString("Type", this.type.name);
+	}
+
+	protected boolean canTriggerWalking()
+	{
+		return false;
+	}
+
+	public AxisAlignedBB getCollisionBox(Entity entity)
+	{
+		return null;
+	}
+	
+	public AxisAlignedBB getBoundingBox()
+	{
+		return this.boundingBox;
+	}
+}

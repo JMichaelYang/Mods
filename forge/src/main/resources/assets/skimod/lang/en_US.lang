@@ -1,0 +1,6 @@
+key.leftKey=Turn Left
+key.rightKey=Turn Right
+key.upKey=Accelerate
+key.downKey=Decelerate
+
+key.categories.skiing=Skiing

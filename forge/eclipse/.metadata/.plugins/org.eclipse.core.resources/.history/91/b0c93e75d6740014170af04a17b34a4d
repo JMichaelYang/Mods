@@ -1,0 +1,25 @@
+package com.jgames.skiing.skis;
+
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+
+public class RenderSkis extends Render
+{
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float r1, float r2) 
+	{
+		this.render();
+	}
+	
+	public void render()
+	{
+		
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return (EntitySkis)entity;
+	}
+}
