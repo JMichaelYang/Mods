@@ -1,0 +1,49 @@
+package com.jgames.skiing.network;
+
+import com.jgames.skiing.skis.EntitySkis;
+
+import io.netty.buffer.ByteBuf;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+
+public class Message implements IMessage
+{
+	public int entityID;
+	public double posX;
+	public double posY;
+	public double posZ;
+	public double yaw;
+	public double pitch;
+	public double roll;
+	public double motX;
+	public double motY;
+	public double motZ;
+	
+	public Message() {}
+	
+	public Message(EntitySkis skis)
+	{
+		this.entityID = skis.getEntityId();
+		this.posX = skis.posX;
+		this.posY = skis.posY;
+		this.posZ = skis.posZ;
+		this.yaw = skis.skisYaw;
+		this.pitch = skis.skisPitch;
+		this.roll = skis.skisRoll;
+		this.motX = skis.motionX;
+		this.motY = skis.motionY;
+		this.motZ = skis.motionZ;
+	}
+	
+	@Override
+	public void fromBytes(ByteBuf buf) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void toBytes(ByteBuf buf) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -37,22 +37,6 @@ public class RenderSkis extends Render
 		GL11.glPushMatrix();
         GL11.glTranslatef((float)p_76986_2_, (float)p_76986_4_, (float)p_76986_6_);
         GL11.glRotatef(90.0F - p_76986_8_, 0.0F, 1.0F, 0.0F);
-        float f2 = (float)p_76986_1_.getTimeSinceHit() - p_76986_9_;
-        float f3 = p_76986_1_.getDamageTaken() - p_76986_9_;
-
-        if (f3 < 0.0F)
-        {
-            f3 = 0.0F;
-        }
-
-        if (f2 > 0.0F)
-        {
-            GL11.glRotatef(MathHelper.sin(f2) * f2 * f3 / 10.0F * (float)p_76986_1_.getForwardDirection(), 1.0F, 0.0F, 0.0F);
-        }
-
-        float f4 = 0.75F;
-        GL11.glScalef(f4, f4, f4);
-        GL11.glScalef(1.0F / f4, 1.0F / f4, 1.0F / f4);
         this.bindEntityTexture(p_76986_1_);
         GL11.glScalef(-1.0F, -1.0F, 1.0F);
         this.modelSkis.render(p_76986_1_, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);

@@ -1,0 +1,9 @@
+package com.jgames.skiing.network;
+
+public abstract class AbstractPacket 
+{
+	public abstract void encodeInto(ChannelHandlerContext ctx, ByeBuf buffer)
+	{
+		
+	}
+}

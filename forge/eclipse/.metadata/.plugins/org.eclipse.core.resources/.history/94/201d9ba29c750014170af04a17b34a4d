@@ -1,0 +1,6 @@
+package com.jgames.skiing.network;
+
+public class MessageHandler implements IMessageHandler<Message, IMessage>
+{
+
+}

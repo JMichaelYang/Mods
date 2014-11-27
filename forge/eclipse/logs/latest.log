@@ -1,49 +1,32 @@
-[23:28:21] [main/INFO]: Setting user: Player292
-[23:28:23] [Client thread/INFO]: LWJGL Version: 2.9.1
-[23:28:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns, FMLFileResourcePack:Ski Mod
-[23:28:28] [Sound Library Loader/INFO]: Sound engine started
-[23:28:30] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[23:28:30] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[23:28:30] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns, FMLFileResourcePack:Ski Mod
-[23:28:30] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[23:28:30] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[23:28:31] [Sound Library Loader/INFO]: Sound engine started
-[23:28:35] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[23:28:35] [Server thread/INFO]: Generating keypair
-[23:28:35] [Server thread/INFO]: Preparing start region for level 0
-[23:28:36] [Server thread/INFO]: Changing view distance to 12, from 10
-[23:28:36] [Server thread/INFO]: Player292[local:E:9dceea10] logged in with entity id 119 at (130.26689851223693, 62.393493090628624, -266.8359236619538)
-[23:28:36] [Server thread/INFO]: Player292 joined the game
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:28:37] [Client thread/WARN]: Biome ID is out of bounds: 2563, defaulting to 0 (Ocean)
-[23:29:22] [Client thread/INFO]: Warning: Clientside chunk ticking took 165 ms
-[23:29:28] [Client thread/INFO]: Warning: Clientside chunk ticking took 189 ms
-[23:29:36] [Server thread/INFO]: Saving and pausing game...
-[23:29:36] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[23:29:36] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[23:29:36] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[23:29:37] [Client thread/INFO]: Stopping!
-[23:29:37] [Server thread/INFO]: Stopping server
-[23:29:37] [Server thread/INFO]: Saving players
-[23:29:37] [Server thread/INFO]: Saving worlds
-[23:29:37] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[23:29:37] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[23:29:37] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:38:25] [main/INFO]: Setting user: Player833
+[23:38:26] [Client thread/INFO]: LWJGL Version: 2.9.1
+[23:38:31] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns, FMLFileResourcePack:Ski Mod
+[23:38:32] [Sound Library Loader/INFO]: Sound engine started
+[23:38:34] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[23:38:34] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[23:38:34] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Big Guns, FMLFileResourcePack:Ski Mod
+[23:38:34] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[23:38:34] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[23:38:35] [Sound Library Loader/INFO]: Sound engine started
+[23:38:38] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[23:38:38] [Server thread/INFO]: Generating keypair
+[23:38:39] [Server thread/INFO]: Preparing start region for level 0
+[23:38:40] [Server thread/INFO]: Changing view distance to 12, from 10
+[23:38:40] [Server thread/INFO]: Player833[local:E:66327edc] logged in with entity id 273 at (201.85077043246767, 62.413630880594056, -269.93056082370794)
+[23:38:40] [Server thread/INFO]: Player833 joined the game
+[23:38:41] [Server thread/WARN]: Biome ID is out of bounds: 2049, defaulting to 0 (Ocean)
+[23:38:41] [Server thread/INFO]: Saving and pausing game...
+[23:38:41] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:38:41] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:38:41] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:39:27] [Server thread/INFO]: Saving and pausing game...
+[23:39:27] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:39:27] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:39:27] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:39:28] [Client thread/INFO]: Stopping!
+[23:39:28] [Server thread/INFO]: Stopping server
+[23:39:28] [Server thread/INFO]: Saving players
+[23:39:28] [Server thread/INFO]: Saving worlds
+[23:39:28] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:39:28] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:39:28] [Server thread/INFO]: Saving chunks for level 'New World'/The End

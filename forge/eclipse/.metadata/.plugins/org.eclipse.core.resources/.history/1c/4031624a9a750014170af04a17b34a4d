@@ -1,0 +1,31 @@
+package com.jgames.skiing.network;
+
+import java.util.EnumMap;
+
+import com.jgames.bigguns.common.NetworkHelper.IPacket;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import cpw.mods.fml.common.network.FMLEmbeddedChannel;
+import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
+import cpw.mods.fml.relauncher.Side;
+
+@ChannelHandler.Sharable
+public class PacketHandler extends FMLIndexedMessageToMessageCodec<IPacket>
+{
+	private EnumMap<Side, FMLEmbeddedChannel> channels;
+
+	@Override
+	public void encodeInto(ChannelHandlerContext ctx, IPacket msg, ByteBuf target) throws Exception 
+	{
+		
+	}
+
+	@Override
+	public void decodeInto(ChannelHandlerContext ctx, ByteBuf source, IPacket msg) 
+	{
+		
+	}
+
+}

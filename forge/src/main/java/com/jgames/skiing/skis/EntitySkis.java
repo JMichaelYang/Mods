@@ -28,27 +28,31 @@ public class EntitySkis extends Entity
 {
 	protected String type;
 	
-	/** true if no player in boat */
-    private boolean isBoatEmpty;
+    private boolean areSkisEmpty;
     private double speedMultiplier;
-    private int boatPosRotationIncrements;
-    private double boatX;
-    private double boatY;
-    private double boatZ;
-    private double boatYaw;
-    private double boatPitch;
+    private int serverTicker;
+    private double skisX;
+    private double skisY;
+    private double skisZ;
+    public double skisYaw;
+    public double skisPitch;
+    public double skisRoll;
+    
+    //Representing the original entity values
+    public double rotationRoll;
+    public double prevRotationRoll;
+    
     @SideOnly(Side.CLIENT)
     private double velocityX;
     @SideOnly(Side.CLIENT)
     private double velocityY;
     @SideOnly(Side.CLIENT)
     private double velocityZ;
-    private static final String __OBFID = "CL_00001667";
 
     public EntitySkis(World p_i1704_1_)
     {
         super(p_i1704_1_);
-        this.isBoatEmpty = true;
+        this.areSkisEmpty = true;
         this.speedMultiplier = 0.07D;
         this.preventEntitySpawning = true;
         this.setSize(1.5F, 0.6F);
@@ -182,11 +186,11 @@ public class EntitySkis extends Entity
      * posY, posZ, yaw, pitch
      */
     @SideOnly(Side.CLIENT)
-    public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
+    public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int ticks)
     {
-        if (this.isBoatEmpty)
+        if (this.areSkisEmpty)
         {
-            this.boatPosRotationIncrements = p_70056_9_ + 5;
+            this.serverTicker = ticks + 5;
         }
         else
         {
@@ -200,17 +204,42 @@ public class EntitySkis extends Entity
                 return;
             }
 
-            this.boatPosRotationIncrements = 3;
+            this.serverTicker = 3;
         }
 
-        this.boatX = p_70056_1_;
-        this.boatY = p_70056_3_;
-        this.boatZ = p_70056_5_;
-        this.boatYaw = (double)p_70056_7_;
-        this.boatPitch = (double)p_70056_8_;
+        this.skisX = p_70056_1_;
+        this.skisY = p_70056_3_;
+        this.skisZ = p_70056_5_;
+        this.skisYaw = (double)p_70056_7_;
+        this.skisPitch = (double)p_70056_8_;
         this.motionX = this.velocityX;
         this.motionY = this.velocityY;
         this.motionZ = this.velocityZ;
+    }
+    
+    public void setPositionRotationAndMotion(double x, double y, double z, double yaw, double pitch, double roll, double motX, double motY, double motZ)
+    {
+    	if(this.worldObj.isRemote)
+    	{
+    		this.posX = x;
+    		this.posY = y;
+    		this.posZ = z;
+    		this.skisYaw = yaw;
+    		this.skisPitch = pitch;
+    		this.skisRoll = roll;
+    		this.serverTicker = 5;
+    	}
+    	else
+    	{
+    		this.setPosition(x, y, z);
+    		this.prevRotationYaw = (float)yaw;
+    		this.prevRotationPitch = (float)pitch;
+    		this.prevRotationRoll = roll;
+    	}
+    	
+    	this.motionX = motX;
+    	this.motionY = motY;
+    	this.motionZ = motZ;
     }
 
     /**
@@ -294,17 +323,17 @@ public class EntitySkis extends Entity
         double d11;
         double d12;
 
-        if (this.worldObj.isRemote && this.isBoatEmpty)
+        if (this.worldObj.isRemote && this.areSkisEmpty)
         {
-            if (this.boatPosRotationIncrements > 0)
+            if (this.serverTicker > 0)
             {
-                d2 = this.posX + (this.boatX - this.posX) / (double)this.boatPosRotationIncrements;
-                d4 = this.posY + (this.boatY - this.posY) / (double)this.boatPosRotationIncrements;
-                d11 = this.posZ + (this.boatZ - this.posZ) / (double)this.boatPosRotationIncrements;
-                d12 = MathHelper.wrapAngleTo180_double(this.boatYaw - (double)this.rotationYaw);
-                this.rotationYaw = (float)((double)this.rotationYaw + d12 / (double)this.boatPosRotationIncrements);
-                this.rotationPitch = (float)((double)this.rotationPitch + (this.boatPitch - (double)this.rotationPitch) / (double)this.boatPosRotationIncrements);
-                --this.boatPosRotationIncrements;
+                d2 = this.posX + (this.skisX - this.posX) / (double)this.serverTicker;
+                d4 = this.posY + (this.skisY - this.posY) / (double)this.serverTicker;
+                d11 = this.posZ + (this.skisZ - this.posZ) / (double)this.serverTicker;
+                d12 = MathHelper.wrapAngleTo180_double(this.skisYaw - (double)this.rotationYaw);
+                this.rotationYaw = (float)((double)this.rotationYaw + d12 / (double)this.serverTicker);
+                this.rotationPitch = (float)((double)this.rotationPitch + (this.skisPitch - (double)this.rotationPitch) / (double)this.serverTicker);
+                --this.serverTicker;
                 this.setPosition(d2, d4, d11);
                 this.setRotation(this.rotationYaw, this.rotationPitch);
             }
@@ -656,7 +685,7 @@ public class EntitySkis extends Entity
     @SideOnly(Side.CLIENT)
     public void setIsBoatEmpty(boolean p_70270_1_)
     {
-        this.isBoatEmpty = p_70270_1_;
+        this.areSkisEmpty = p_70270_1_;
     }
     
     @Override

@@ -1,0 +1,5 @@
+package com.jgames.skiing.network;
+
+public class Message implements IMessage{
+
+}

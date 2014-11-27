@@ -1,0 +1,15 @@
+package com.jgames.skiing.network;
+
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+
+public class MessageHandler implements IMessageHandler<Message, IMessage>
+{
+	@Override
+	public IMessage onMessage(Message message, MessageContext ctx) 
+	{
+		
+		return null;
+	}
+}

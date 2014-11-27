@@ -1,0 +1,83 @@
+package com.jgames.skiing.network;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+
+import com.jgames.skiing.skis.EntitySkis;
+
+import io.netty.buffer.ByteBuf;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+
+public class Message implements IMessage
+{
+	public int entityID;
+	public double posX;
+	public double posY;
+	public double posZ;
+	public double yaw;
+	public double pitch;
+	public double roll;
+	public double motX;
+	public double motY;
+	public double motZ;
+	
+	public Message() {}
+	
+	public Message(EntitySkis skis)
+	{
+		this.entityID = skis.getEntityId();
+		this.posX = skis.posX;
+		this.posY = skis.posY;
+		this.posZ = skis.posZ;
+		this.yaw = skis.skisYaw;
+		this.pitch = skis.skisPitch;
+		this.roll = skis.skisRoll;
+		this.motX = skis.motionX;
+		this.motY = skis.motionY;
+		this.motZ = skis.motionZ;
+	}
+
+	@Override
+	public void toBytes(ByteBuf buf) 
+	{
+		buf.writeInt(this.entityID);
+		buf.writeDouble(this.posX);
+		buf.writeDouble(this.posY);
+		buf.writeDouble(this.posZ);
+		buf.writeDouble(this.yaw);
+		buf.writeDouble(this.pitch);
+		buf.writeDouble(this.roll);
+		buf.writeDouble(this.motX);
+		buf.writeDouble(this.motY);
+		buf.writeDouble(this.motZ);
+	}
+	
+	@Override
+	public void fromBytes(ByteBuf buf) 
+	{
+		this.entityID = buf.readInt();
+		this.posX = buf.readDouble();
+		this.posY = buf.readDouble();
+		this.posZ = buf.readDouble();
+		this.yaw = buf.readDouble();
+		this.pitch = buf.readDouble();
+		this.roll = buf.readDouble();
+		this.motX = buf.readDouble();
+		this.motY = buf.readDouble();
+		this.motZ = buf.readDouble();
+	}
+	
+	public void handlerServer(EntityPlayerMP player)
+	{
+		EntitySkis skis = null;
+		
+		for(Object obj : player.worldObj.loadedEntityList)
+		{
+			if(obj instanceof EntitySkis && ((Entity)obj).getEntityId == this.entityID)
+		}
+	}
+	
+	protected void updateSkis(EntitySkis skis)
+	{
+		skis.setPositionRotationAndMotion(this.posX, this.posY, this.posZ, this.yaw, this.pitch, this.roll, this.motX, this.motY, this.motZ);
+	}
+}
