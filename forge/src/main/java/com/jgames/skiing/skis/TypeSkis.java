@@ -6,14 +6,14 @@ public class TypeSkis
 {
 	public String name;
 	
-	public float maxSpeed;
+	public double maxSpeed;
 	public float rotationSpeed;
 	public boolean twinTips;
 	
 	public static ArrayList<TypeSkis> skis = new ArrayList<TypeSkis>();
 	
 	public TypeSkis(String name,
-			float maxSpeed, float rotationSpeed, boolean twinTips)
+			double maxSpeed, float rotationSpeed, boolean twinTips)
 	{
 		this.name = name;
 		
@@ -38,5 +38,5 @@ public class TypeSkis
 	}
 	
 	public static TypeSkis wood = new TypeSkis("Wood",
-		20f, 20f, false);
+		0.35d, 20f, false);
 }
