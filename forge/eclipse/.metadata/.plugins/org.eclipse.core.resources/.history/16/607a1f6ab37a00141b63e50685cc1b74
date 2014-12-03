@@ -230,13 +230,13 @@ public class EntitySkis extends Entity
         //first, check if we are on the ground
         if(this.onGround)
         {
-        	//-----update loop for on ground-----//
+        	/*update loop for on ground*/
         	
         	//first, check if we are on snow
         }
         else
         {
-        	//-----update loop for in the air-----//
+        	//update loop for in the air
         }
         
         //first, find the material that we are directly on top of

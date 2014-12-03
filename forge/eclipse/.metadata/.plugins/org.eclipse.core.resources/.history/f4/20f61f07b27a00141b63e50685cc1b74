@@ -209,38 +209,217 @@ public class EntitySkis extends Entity
     public void onUpdate()
     {
         super.onUpdate();
+
+        //setting previous positions
         
-        //all other previous are set in super.onUpdate();
-        this.prevRotationRoll = this.rotationRoll;
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
         
-        //new position, rotation, and motion fields to store data, we set all values at the end
-        double newX = this.posX;
-        double newY = this.posY;
-        double newZ = this.posZ;
-        double newYaw = this.rotationYaw;
-        double newPitch = this.rotationPitch;
-        double newRoll = this.rotationRoll;
-        double newMX = this.motionX;
-        double newMY = this.motionY;
-        double newMZ = this.motionZ;
+        //check whether the skis are on snow
         
-        //other variables for various uses
         boolean isOnSnow = false;
-        
-        //first, check if we are on the ground
-        if(this.onGround)
+        AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, this.boundingBox.minY - 1d, this.boundingBox.minZ, this.boundingBox.maxX, this.boundingBox.maxY - 1d, this.boundingBox.maxZ);
+
+        if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.snow))
         {
-        	//-----update loop for on ground-----//
-        	
-        	//first, check if we are on snow
+        	isOnSnow = true;
+        }
+        
+        //spawning particles
+
+        double speed = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
+        double cos;
+        double sin;
+
+        if (speed > 0.25d)
+        {
+            cos = Math.cos((double)this.rotationYaw * Math.PI / 180.0d);
+            sin = Math.sin((double)this.rotationYaw * Math.PI / 180.0d);
+
+            for (double i = 0; i < 1.0d + speed * 60.0d; i += 1d)
+            {
+                double d5 = (double)(this.rand.nextFloat() * 2.0f - 1.0f);
+                double d6 = (double)(this.rand.nextInt(2) * 2 - 1) * 0.7d;
+                double partX;
+                double partZ;
+
+                if (this.rand.nextBoolean())
+                {
+                	partX = this.posX - cos * d5 * 0.8D + sin * d6;
+                	partZ = this.posZ - sin * d5 * 0.8D - cos * d6;
+                    this.worldObj.spawnParticle("snowballpoof", partX, this.posY, partZ, this.motionX, this.motionY, this.motionZ);
+                }
+                else
+                {
+                	partX = this.posX + cos + sin * d5 * 0.7D;
+                	partZ = this.posZ + sin - cos * d5 * 0.7D;
+                    this.worldObj.spawnParticle("snowballpoof", partX, this.posY, partZ, this.motionX, this.motionY, this.motionZ);
+                }
+            }
+        }
+
+        //if skis are empty, continue forward but slow down
+        
+        double valX;
+        double valY;
+        double valZ;
+        double yaw;
+
+        if (this.worldObj.isRemote && this.areSkisEmpty)
+        {
+            if (this.serverTicker > 0)
+            {
+                valX = this.posX + (this.skisX - this.posX) / (double)this.serverTicker;
+                valY = this.posY + (this.skisY - this.posY) / (double)this.serverTicker;
+                valZ = this.posZ + (this.skisZ - this.posZ) / (double)this.serverTicker;
+                yaw = MathHelper.wrapAngleTo180_double(this.skisYaw - (double)this.rotationYaw);
+                this.rotationYaw = (float)((double)this.rotationYaw + yaw / (double)this.serverTicker);
+                this.rotationPitch = (float)((double)this.rotationPitch + (this.skisPitch - (double)this.rotationPitch) / (double)this.serverTicker);
+                this.serverTicker--;
+                this.setPosition(valX, valY, valZ);
+                this.setRotation(this.rotationYaw, this.rotationPitch);
+            }
+            else
+            {
+                valX = this.posX + this.motionX;
+                valY = this.posY + this.motionY;
+                valZ = this.posZ + this.motionZ;
+                this.setPosition(valX, valY, valZ);
+
+                if (!isOnSnow)
+                {
+                    this.motionX *= 0.5D;
+                    this.motionY *= 0.5D;
+                    this.motionZ *= 0.5D;
+                }
+
+                this.motionX *= 0.99D;
+                this.motionY *= 0.95D;
+                this.motionZ *= 0.99D;
+            }
         }
         else
         {
-        	//-----update loop for in the air-----//
+        	//player controls
+        	
+            if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase)
+            {
+            	float accelerate = 0f;
+            	float strafe = 0f;
+            	if(KeyBindings.leftKey.getIsKeyPressed())
+            	{
+            		strafe -= 1f; 
+            	}
+            	if(KeyBindings.rightKey.getIsKeyPressed())
+            	{
+            		strafe += 1f;
+            	}
+            	if(KeyBindings.upKey.getIsKeyPressed())
+            	{
+            		accelerate = 1f;
+            	}
+            	if(KeyBindings.downKey.getIsKeyPressed())
+            	{
+            		accelerate = -0.5f;
+            	}
+            	
+                EntityLivingBase entitylivingbase = (EntityLivingBase)this.riddenByEntity;
+                float newYaw = this.riddenByEntity.rotationYaw + strafe * 90.0f;
+                this.motionX += -Math.sin((double)(newYaw * (float)Math.PI / 180.0f)) * (double)accelerate * 0.035d;
+                this.motionZ += Math.cos((double)(newYaw * (float)Math.PI / 180.0f)) * (double)accelerate * 0.035d;
+            }
+            
+            //limit speed to max speed
+
+            speed = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
+
+            if (speed > this.getType().maxSpeed)
+            {
+                double multiplier = this.getType().maxSpeed / speed;
+                this.motionX *= multiplier;
+                this.motionZ *= multiplier;
+                speed = this.getType().maxSpeed;
+            }
+            
+            for (int l = 0; l < 4; ++l)
+            {
+                int i1 = MathHelper.floor_double(this.posX + ((double)(l % 2) - 0.5D) * 0.8D);
+                int i2 = MathHelper.floor_double(this.posZ + ((double)(l / 2) - 0.5D) * 0.8D);
+
+                for (int j1 = 0; j1 < 2; ++j1)
+                {
+                    int k = MathHelper.floor_double(this.posY) + j1;
+                    Block block = this.worldObj.getBlock(i1, k, i2);
+
+                    if (block == Blocks.snow_layer)
+                    {
+                        this.worldObj.setBlockToAir(i1, k, i2);
+                        this.isCollidedHorizontally = false;
+                    }
+                }
+            }
+
+            //reduce speed if not on snow
+            
+            if (!isOnSnow)
+            {
+                this.motionX *= 0.5D;
+                this.motionY *= 0.5D;
+                this.motionZ *= 0.5D;
+            }
+
+            //get moving
+            
+            this.moveEntity(this.motionX, this.motionY, this.motionZ);
+
+            //if we hit something
+            
+            if (this.isCollidedHorizontally && speed > this.getType().breakSpeed)
+            {
+                if (!this.worldObj.isRemote && !this.isDead)
+                {
+                    this.setDead();
+                    
+                    this.func_145778_a(SkiMod.woodSkis, 1, 0.0F);
+                }
+            }
+            else
+            {
+                this.motionX *= 0.99d;
+                this.motionY *= 0.95d;
+                this.motionZ *= 0.99d;
+            }
+
+            this.rotationPitch = 0.0F;
+            yaw = (double)this.rotationYaw;
+            valX = this.prevPosX - this.posX;
+            valZ = this.prevPosZ - this.posZ;
+
+            //new yaw from speeds
+            
+            if (valX * valX + valZ * valZ > 0.001D)
+            {
+                yaw = (double)((float)(Math.atan2(valZ, valX) * 180.0d / Math.PI));
+            }
+
+            //limit yaw change
+            
+            double yawChange = MathHelper.wrapAngleTo180_double(yaw - (double)this.rotationYaw);
+
+            if (yawChange > 20d)
+            {
+            	yawChange = 20d;
+            }
+
+            if (yawChange < -20d)
+            {
+            	yawChange = -20d;
+            }
+
+            this.rotationYaw = (float)((double)this.rotationYaw + yawChange);
+            this.setRotation(this.rotationYaw, this.rotationPitch);
         }
-        
-        //first, find the material that we are directly on top of
-        
     }
 
     public void updateRiderPosition()

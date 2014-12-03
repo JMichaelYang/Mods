@@ -225,18 +225,16 @@ public class EntitySkis extends Entity
         double newMZ = this.motionZ;
         
         //other variables for various uses
-        boolean isOnSnow = false;
+        boolean isOnSnow;
         
         //first, check if we are on the ground
         if(this.onGround)
         {
-        	//-----update loop for on ground-----//
         	
-        	//first, check if we are on snow
         }
         else
         {
-        	//-----update loop for in the air-----//
+        	
         }
         
         //first, find the material that we are directly on top of

@@ -214,30 +214,15 @@ public class EntitySkis extends Entity
         this.prevRotationRoll = this.rotationRoll;
         
         //new position, rotation, and motion fields to store data, we set all values at the end
-        double newX = this.posX;
-        double newY = this.posY;
-        double newZ = this.posZ;
-        double newYaw = this.rotationYaw;
-        double newPitch = this.rotationPitch;
-        double newRoll = this.rotationRoll;
-        double newMX = this.motionX;
-        double newMY = this.motionY;
-        double newMZ = this.motionZ;
-        
-        //other variables for various uses
-        boolean isOnSnow = false;
-        
-        //first, check if we are on the ground
-        if(this.onGround)
-        {
-        	//-----update loop for on ground-----//
-        	
-        	//first, check if we are on snow
-        }
-        else
-        {
-        	//-----update loop for in the air-----//
-        }
+        double newX;
+        double newY;
+        double newZ;
+        double newYaw;
+        double newPitch;
+        double newRoll;
+        double newMX;
+        double newMY;
+        double new MZ
         
         //first, find the material that we are directly on top of
         
