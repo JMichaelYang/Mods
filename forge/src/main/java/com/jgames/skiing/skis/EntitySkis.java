@@ -28,7 +28,6 @@ import net.minecraft.world.World;
 public class EntitySkis extends Entity
 {
     private boolean areSkisEmpty;
-    private double speedMultiplier;
     private int serverTicker;
     private double skisX;
     private double skisY;
@@ -52,7 +51,6 @@ public class EntitySkis extends Entity
     {
         super(p_i1704_1_);
         this.areSkisEmpty = true;
-        this.speedMultiplier = 0.07d;
         this.preventEntitySpawning = true;
         this.setSize(2f, 0.6f);
         this.yOffset = 1f / 16f;
@@ -211,260 +209,11 @@ public class EntitySkis extends Entity
     public void onUpdate()
     {
         super.onUpdate();
-
-        this.prevPosX = this.posX;
-        this.prevPosY = this.posY;
-        this.prevPosZ = this.posZ;
-        int ticker = 5;
-        double speedCheck = 0.0d;
-        boolean isOnSnow;
-
-        for (int i = 0; i < ticker; i++)
-        {
-            double d1 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(i + 0) / (double)ticker - 0.125d;
-            double d3 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(i + 1) / (double)ticker - 0.125d;
-            AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, d1, this.boundingBox.minZ, this.boundingBox.maxX, d3, this.boundingBox.maxZ);
-
-            if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.snow))
-            {
-            	speedCheck += 1.0d / (double)ticker;
-            }
-        }
-
-        double speed = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-        double d2;
-        double d4;
-        ticker = 0;
-
-        if (speed > 0.26249999999999996d)
-        {
-            d2 = Math.cos((double)this.rotationYaw * Math.PI / 180.0d);
-            d4 = Math.sin((double)this.rotationYaw * Math.PI / 180.0d);
-
-            for (ticker = 0; (double)ticker < 1.0d + speed * 60.0d; ticker++)
-            {
-                double d5 = (double)(this.rand.nextFloat() * 2.0F - 1.0F);
-                double d6 = (double)(this.rand.nextInt(2) * 2 - 1) * 0.7D;
-                double d8;
-                double d9;
-
-                if (this.rand.nextBoolean())
-                {
-                    d8 = this.posX - d2 * d5 * 0.8D + d4 * d6;
-                    d9 = this.posZ - d4 * d5 * 0.8D - d2 * d6;
-                    this.worldObj.spawnParticle("snowballpoof", d8, this.posY - 0.125D, d9, this.motionX, this.motionY, this.motionZ);
-                }
-                else
-                {
-                    d8 = this.posX + d2 + d4 * d5 * 0.7D;
-                    d9 = this.posZ + d4 - d2 * d5 * 0.7D;
-                    this.worldObj.spawnParticle("snowballpoof", d8, this.posY - 0.125D, d9, this.motionX, this.motionY, this.motionZ);
-                }
-            }
-        }
-
-        double d11;
-        double d12;
-
-        if (this.worldObj.isRemote && this.areSkisEmpty)
-        {
-            if (this.serverTicker > 0)
-            {
-                d2 = this.posX + (this.skisX - this.posX) / (double)this.serverTicker;
-                d4 = this.posY + (this.skisY - this.posY) / (double)this.serverTicker;
-                d11 = this.posZ + (this.skisZ - this.posZ) / (double)this.serverTicker;
-                d12 = MathHelper.wrapAngleTo180_double(this.skisYaw - (double)this.rotationYaw);
-                this.rotationYaw = (float)((double)this.rotationYaw + d12 / (double)this.serverTicker);
-                this.rotationPitch = (float)((double)this.rotationPitch + (this.skisPitch - (double)this.rotationPitch) / (double)this.serverTicker);
-                --this.serverTicker;
-                this.setPosition(d2, d4, d11);
-                this.setRotation(this.rotationYaw, this.rotationPitch);
-            }
-            else
-            {
-                d2 = this.posX + this.motionX;
-                d4 = this.posY + this.motionY;
-                d11 = this.posZ + this.motionZ;
-                this.setPosition(d2, d4, d11);
-
-                if (this.onGround)
-                {
-                    this.motionX *= 0.5D;
-                    this.motionY *= 0.5D;
-                    this.motionZ *= 0.5D;
-                }
-
-                this.motionX *= 0.9900000095367432D;
-                this.motionY *= 0.949999988079071D;
-                this.motionZ *= 0.9900000095367432D;
-            }
-        }
-        else
-        {
-            if (speedCheck < 1.0d)
-            {
-                d2 = speedCheck * 2.0d - 1.0d;
-                this.motionY += 0.03999999910593033d * d2;
-            }
-            else
-            {
-                if (this.motionY < 0.0d)
-                {
-                    this.motionY /= 2.0d;
-                }
-
-                this.motionY += 0.007000000216066837d;
-            }
-
-            if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase)
-            {
-            	float accelerate = 0f;
-            	float strafe = 0f;
-            	if(KeyBindings.leftKey.getIsKeyPressed())
-            	{
-            		strafe -= 1f; 
-            	}
-            	if(KeyBindings.rightKey.getIsKeyPressed())
-            	{
-            		strafe += 1f;
-            	}
-            	if(KeyBindings.upKey.getIsKeyPressed())
-            	{
-            		accelerate = 1f;
-            	}
-            	if(KeyBindings.downKey.getIsKeyPressed())
-            	{
-            		accelerate = -0.5f;
-            	}
-            	
-                EntityLivingBase entitylivingbase = (EntityLivingBase)this.riddenByEntity;
-                float f = this.riddenByEntity.rotationYaw + strafe * 90.0F;
-                this.motionX += -Math.sin((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)accelerate * 0.05000000074505806D;
-                this.motionZ += Math.cos((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)accelerate * 0.05000000074505806D;
-            }
-
-            d2 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
-            if (d2 > this.getType().maxSpeed)
-            {
-                d4 = 0.35D / d2;
-                this.motionX *= d4;
-                this.motionZ *= d4;
-                d2 = 0.35D;
-            }
-
-            if (d2 > speed && this.speedMultiplier < 0.35D)
-            {
-                this.speedMultiplier += (0.35D - this.speedMultiplier) / 35.0D;
-
-                if (this.speedMultiplier > 0.35D)
-                {
-                    this.speedMultiplier = 0.35D;
-                }
-            }
-            else
-            {
-                this.speedMultiplier -= (this.speedMultiplier - 0.07D) / 35.0D;
-
-                if (this.speedMultiplier < 0.07D)
-                {
-                    this.speedMultiplier = 0.07D;
-                }
-            }
-
-            int l;
-
-            for (l = 0; l < 4; ++l)
-            {
-                int i1 = MathHelper.floor_double(this.posX + ((double)(l % 2) - 0.5D) * 0.8D);
-                ticker = MathHelper.floor_double(this.posZ + ((double)(l / 2) - 0.5D) * 0.8D);
-
-                for (int j1 = 0; j1 < 2; ++j1)
-                {
-                    int k = MathHelper.floor_double(this.posY) + j1;
-                    Block block = this.worldObj.getBlock(i1, k, ticker);
-
-                    if (block == Blocks.snow_layer)
-                    {
-                        this.worldObj.setBlockToAir(i1, k, ticker);
-                        this.isCollidedHorizontally = false;
-                    }
-                }
-            }
-
-            /*if (this.onGround)
-            {
-                this.motionX *= 0.5D;
-                this.motionY *= 0.5D;
-                this.motionZ *= 0.5D;
-            }*/
-
-            this.moveEntity(this.motionX, this.motionY, this.motionZ);
-
-            if (this.isCollidedHorizontally && speed > 0.2D)
-            {
-                if (!this.worldObj.isRemote && !this.isDead)
-                {
-                    this.setDead();
-                    
-                    this.func_145778_a(SkiMod.woodSkis, 1, 0.0F);
-                }
-            }
-            else
-            {
-                this.motionX *= 0.9900000095367432d;
-                this.motionY *= 0.949999988079071d;
-                this.motionZ *= 0.9900000095367432d;
-            }
-
-            this.rotationPitch = 0.0F;
-            d4 = (double)this.rotationYaw;
-            d11 = this.prevPosX - this.posX;
-            d12 = this.prevPosZ - this.posZ;
-
-            if (d11 * d11 + d12 * d12 > 0.001D)
-            {
-                d4 = (double)((float)(Math.atan2(d12, d11) * 180.0D / Math.PI));
-            }
-
-            double d7 = MathHelper.wrapAngleTo180_double(d4 - (double)this.rotationYaw);
-
-            if (d7 > 20.0D)
-            {
-                d7 = 20.0D;
-            }
-
-            if (d7 < -20.0D)
-            {
-                d7 = -20.0D;
-            }
-
-            this.rotationYaw = (float)((double)this.rotationYaw + d7);
-            this.setRotation(this.rotationYaw, this.rotationPitch);
-
-            if (!this.worldObj.isRemote)
-            {
-                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
-
-                if (list != null && !list.isEmpty())
-                {
-                    for (int k1 = 0; k1 < list.size(); ++k1)
-                    {
-                        Entity entity = (Entity)list.get(k1);
-
-                        if (entity != this.riddenByEntity && entity.canBePushed() && entity instanceof EntityBoat)
-                        {
-                            entity.applyEntityCollision(this);
-                        }
-                    }
-                }
-
-                if (this.riddenByEntity != null && this.riddenByEntity.isDead)
-                {
-                    this.riddenByEntity = null;
-                }
-            }
-        }
+        
+        //all other previous are set in super.onUpdate();
+        this.prevRotationRoll = this.rotationRoll;
+        
+        
     }
 
     public void updateRiderPosition()
@@ -474,7 +223,7 @@ public class EntitySkis extends Entity
             double d0 = Math.cos((double)this.rotationYaw * Math.PI / 180.0D) * 0.4D;
             double d1 = Math.sin((double)this.rotationYaw * Math.PI / 180.0D) * 0.4D;
             this.riddenByEntity.setPosition(this.posX + d0, this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1);
-            this.riddenByEntity.setAngles((this.rotationYaw - this.prevRotationYaw) * (20/3), 0);
+            this.riddenByEntity.setAngles(this.rotationYaw, 0);
         }
     }
     

@@ -1,0 +1,84 @@
+---- Minecraft Crash Report ----
+// Sorry :(
+
+Time: 11/30/14 7:51 PM
+Description: Ticking entity
+
+java.lang.NullPointerException: Ticking entity
+	at com.jgames.skiing.skis.EntitySkis.onUpdate(EntitySkis.java:337)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2298)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:684)
+	at net.minecraft.world.World.updateEntity(World.java:2258)
+	at net.minecraft.world.World.updateEntities(World.java:2108)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:515)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:703)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.jgames.skiing.skis.EntitySkis.onUpdate(EntitySkis.java:337)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2298)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:684)
+	at net.minecraft.world.World.updateEntity(World.java:2258)
+
+-- Entity being ticked --
+Details:
+	Entity Type: Skis (com.jgames.skiing.skis.EntitySkis)
+	Entity ID: 1
+	Entity Name: entity.Skis.name
+	Entity's Exact location: -470.59, 65.00, -595.85
+	Entity's Block location: World: (-471,65,-596), Chunk: (at 9,4,12 in -30,-38; contains blocks -480,0,-608 to -465,255,-593), Region: (-1,-2; contains chunks -32,-64 to -1,-33, blocks -512,0,-1024 to -1,255,-513)
+	Entity's Momentum: -0.00, 0.00, -0.05
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:2108)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:515)
+
+-- Affected level --
+Details:
+	Level name: Copy of New World
+	All players: 1 total; [EntityPlayerMP['Player854'/0, l='Copy of New World', x=-470.57, y=64.56, z=-595.45]]
+	Chunk stats: ServerChunkCache: 746 Drop: 0
+	Level seed: 7519969863010895359
+	Level generator: ID 01 - flat, ver 0. Features enabled: true
+	Level generator options: 2;7,59x1,3x80,2,78;12;village,biome_1
+	Level spawn location: World: (-529,4,-578), Chunk: (at 15,0,14 in -34,-37; contains blocks -544,0,-592 to -529,255,-577), Region: (-2,-2; contains chunks -64,-64 to -33,-33, blocks -1024,0,-1024 to -513,255,-513)
+	Level time: 907 game time, 907 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 124483 (now: false), thunder time: 12924 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:703)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_25, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 727642064 bytes (693 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.85.1230 Minecraft Forge 10.13.2.1230 5 mods loaded, 5 mods active
+	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	FML{7.10.85.1230} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.2.1230.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Forge{10.13.2.1230} [Minecraft Forge] (forgeSrc-1.7.10-10.13.2.1230.jar) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	bigguns{0.0.1} [Big Guns] (bin) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	skimod{0.0.1} [Ski Mod] (bin) Unloaded->Constructed->Pre-initialized->Initialized->Post-initialized->Available->Available->Available->Available
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Player Count: 1 / 8; [EntityPlayerMP['Player854'/0, l='Copy of New World', x=-470.57, y=64.56, z=-595.45]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

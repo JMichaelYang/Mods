@@ -3,3 +3,5 @@
 2014-10-24 21:03:18,910 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - stopped o.e.j.s.ServletContextHandler{/help,null}
 2014-11-25 11:20:53,694 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-8.1.14.v20131031
 2014-11-25 11:20:53,895 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started SelectChannelConnector@127.0.0.1:58098
+2014-11-30 17:25:50,194 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-8.1.14.v20131031
+2014-11-30 17:25:50,339 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started SelectChannelConnector@127.0.0.1:49645
