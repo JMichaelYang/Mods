@@ -233,18 +233,14 @@ public class EntitySkis extends Entity
         	//-----update loop for on ground-----//
         	
         	//first, check if we are on snow
-     
-        	if(this.worldObj.getBlock((int)Math.floor(this.posX), (int)(this.posY - 0.1d), (int)Math.floor(this.posZ)).getMaterial() == Material.snow)
-        	{
-        		isOnSnow = true;
-        	}
-        	
-        	//if on snow, run updates differently
         }
         else
         {
         	//-----update loop for in the air-----//
         }
+        
+        //first, find the material that we are directly on top of
+        
     }
 
     public void updateRiderPosition()

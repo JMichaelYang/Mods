@@ -239,12 +239,15 @@ public class EntitySkis extends Entity
         		isOnSnow = true;
         	}
         	
-        	//if on snow, run updates differently
+        	//if on snow, run updates
         }
         else
         {
         	//-----update loop for in the air-----//
         }
+        
+        //first, find the material that we are directly on top of
+        
     }
 
     public void updateRiderPosition()

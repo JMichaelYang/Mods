@@ -239,7 +239,7 @@ public class EntitySkis extends Entity
         		isOnSnow = true;
         	}
         	
-        	//if on snow, run updates differently
+        	//if on snow, run updates
         }
         else
         {
